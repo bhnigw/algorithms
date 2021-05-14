@@ -18,7 +18,7 @@ public class LinkedList {
 		}
 	}
 
-	// Method to insert a new node
+	// Method to insert a new node 
 	public static LinkedList insert(LinkedList list, int data) {
 		// Create a new node with given data
 		Node new_node = new Node(data);

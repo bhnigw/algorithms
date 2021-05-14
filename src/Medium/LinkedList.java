@@ -24,8 +24,7 @@ public class LinkedList {
 		Node new_node = new Node(data);
 		new_node.next = null;
 
-		// If the Linked List is empty,
-		// then make the new node as head
+		// If the Linked List is empty, then make the new node as head
 		if (list.head == null) {
 			list.head = new_node;
 		} else {

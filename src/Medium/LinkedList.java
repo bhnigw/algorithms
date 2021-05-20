@@ -18,7 +18,7 @@ public class LinkedList {
 		}
 	}
 
-	// Method to insert a new node 
+	// Method to insert a new node
 	public static LinkedList insert(LinkedList list, int data) {
 		// Create a new node with given data
 		Node new_node = new Node(data);
@@ -46,8 +46,6 @@ public class LinkedList {
 	public static void printList(LinkedList list) {
 		Node currNode = list.head;
 
-		System.out.print("LinkedList: ");
-
 		while (currNode != null) {
 			System.out.print(currNode.data + " ");
 			currNode = currNode.next;
@@ -55,21 +53,56 @@ public class LinkedList {
 	}
 
 	public static Node reverseList(Node head) {
-        Node prev = null;
-        Node curr = head;
-        Node next = null;
-        
-        while (curr != null) {
-            next = curr.next; //1. Save next (先把next作为curr.next)
-            curr.next = prev; //2. Reverse (然后把curr.next指向前一个元素prev)
-            prev = curr;      //3. Move forward prev & curr 
-            curr = next;      // (最后把prev和curr分别向前平移一位)
-        }
-        
-        return prev;
-    }
-	
-	
+		Node prev = null;
+		Node curr = head;
+		Node next = null;
+
+		while (curr != null) {
+			next = curr.next; // 1. Save next (先把next作为curr.next)
+			curr.next = prev; // 2. Reverse (然后把curr.next指向前一个元素prev)
+			prev = curr; // 3. Move forward prev & curr
+			curr = next; // (最后把prev和curr分别向前平移一位)
+		}
+
+		return prev;
+	}
+
+	public int length(Node head) {
+		int length = 0;
+		Node currNode = head;
+
+		while (currNode != null) {
+			length++;
+			currNode = currNode.next;
+		}
+
+		return length;
+	}
+
+	// 删除某个值为val的结点：
+	public void deleteNode(int val) {
+		Node curr = head;
+		Node prev = head;
+
+		// 假如第一个就是要删除的,直接next
+		if (curr.data == val) {
+			head = curr.next;
+			return;
+		}
+
+		// 遍历list，跳过那些值不为val的节点
+		while (curr != null && curr.data != val) {
+			prev = curr;
+			curr = curr.next;
+		}
+		
+		// 没有找到要删除的，return
+		if (curr.next == null) return;
+
+		// 如果找到了，就删除
+		prev.next = curr.next;
+	}
+
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 
@@ -85,7 +118,7 @@ public class LinkedList {
 
 		// Print the LinkedList
 		printList(list);
-		
+
 		System.out.println(reverseList(list.head));
 	}
 }

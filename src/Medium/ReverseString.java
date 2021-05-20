@@ -1,33 +1,37 @@
 package Medium;
 
 class ReverseString {
-	public void ReverseString1(String s) {
-		String input = "apple";
 
-		// convert String to character array
-		// by using toCharArray
-		char[] try1 = input.toCharArray();
-
-		for (int i = try1.length - 1; i >= 0; i--)
-			System.out.print(try1[i]);
+	// 方法一：使用build in function
+	public String ReverseString1(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		return sb.reverse().toString();
 	}
 
 	
-	public String ReverseString2(String s) {
-		String input = "Geeks for Geeks";
-
-		StringBuilder input1 = new StringBuilder();
-
-		// append a string into StringBuilder input1
-		input1.append(input);
-
-		// reverse StringBuilder input1
-		return input1.reverse().toString();
-
+	// 方法二：two pointer
+	public String ReverseString2(String str) {
+		char arr[] = str.toCharArray();
+		int left = 0;
+		int right = str.length() - 1;
+		
+		while (left < right) {
+			char temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+			left++;
+			right--;
+		}
+		
+		return new String(arr);
 	}
+	
+	
 	
 	public static void main(String[] args) {
-		
+		ReverseString caozuo = new ReverseString();
+		System.out.println(caozuo.ReverseString1("AbcdefgH"));
+		System.out.println(caozuo.ReverseString2("AbcdefgH"));
 	}
 
 }

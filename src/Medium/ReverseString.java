@@ -23,10 +23,8 @@ class ReverseString {
 			right--;
 		}
 		
-		return new String(arr);
+		return new String(arr); // 也可以用return String.valueOf(arr);
 	}
-	
-	
 	
 	public static void main(String[] args) {
 		ReverseString caozuo = new ReverseString();
